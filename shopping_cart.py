@@ -44,7 +44,16 @@ def shoppingCart():
             delete_item_pretty = delete_item.title()
             if delete_item_pretty not in cart:
                 print("I'm sorry, you don't have " + delete_item_pretty + " in your cart. Did you want to add that?")
+                add_delete = input("Did you want to add that? Yes/No ")
+                add_delete_check = add_delete.title()
+                clear_output()
+                if add_delete_check == 'Yes':
+                    cart.append(delete_item_pretty)
+                    print("Great! We have added " + delete_item_pretty + " to your cart!")
+                elif add_delete_check == 'No':
+                    print("Not a worry, we won't add that!")
             else:
+                clear_output()
                 cart.remove(delete_item_pretty)
                 print("We've removed " + delete_item_pretty + " from your cart!")
                 
