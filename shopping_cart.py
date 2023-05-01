@@ -4,7 +4,7 @@ from IPython.display import clear_output
 
 def shoppingCart():
     """
-        Recieves input to either add items to a list (shopping cart), delete items from that list,
+        Receives input to either add items to a list (shopping cart), delete items from that list,
         view the list, or tell the function to quit, at which any items in the cart will be printed
         for viewing.
     """

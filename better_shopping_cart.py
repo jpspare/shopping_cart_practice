@@ -1,11 +1,11 @@
 class ShoppingCart():
     """
-        The ShoppingCart class has methods for adding items to a list
-        (shopping cart), deleting items from that list, and viewing the
-        list.
+    The ShoppingCart class has methods for adding items to a list
+    (shopping cart), deleting items from that list, and viewing the
+    list.
 
-        Attibute for class:
-        - Cart: expected to be an empty list
+    Attibute for class:
+    - Cart: expected to be an empty list
     """
 
     def __init__(self, cart):
@@ -15,7 +15,7 @@ class ShoppingCart():
     # Also ensures that input argument is an empty list
     def run(self):
         if self.cart != []:
-            print(f"All items in your cart have been returned to your car. You cart is now empty.")
+            print("All items in your cart have been returned to your car. You cart is now empty.")
             self.cart = []
         while self.run1():
             pass
@@ -24,12 +24,12 @@ class ShoppingCart():
     # subsequent methods to use
     def run1(self):
         possible_actions = [
-            {'name': 'show', 'fn': self.showCart},
-            {'name': 'add', 'fn': self.addCart},
-            {'name': 'delete', 'fn': self.deleteCart},
-            {'name': 'quit', 'fn': self.quitCart},
+            {'name': 'show', 'fn': self.show_cart},
+            {'name': 'add', 'fn': self.add_cart},
+            {'name': 'delete', 'fn': self.delete_cart},
+            {'name': 'quit', 'fn': self.quit_cart},
         ]
-        
+
         print("\nWelcome to Food and Stuff! What would you like to do today?")
         action_input = input("\n1. Show my cart \n2. Add to my cart \n3. Delete something from my cart \n4. Quit\n")
         action = None
@@ -52,28 +52,25 @@ class ShoppingCart():
         else: #Fail catch in case 'ifs' don't cover all input options
             print("Whoops, shouldn't be able to get here!")
 
-
     # Method for viewing the cart
-    def showCart(self):
-        if self.cart == []:
+    def show_cart(self):
+        if not self.cart:
             print("You cart is currently empty! Let's find you something to purchase!")
         else:
             print("Here is what you have in your cart:")
             for item in self.cart:
                 print(item)
         return self.run1
-    
 
     # Method for adding to the cart
-    def addCart(self):
+    def add_cart(self):
         item_to_add = input("What would you like to buy today? ")
         self.cart.append(item_to_add.title())
         print(f'Great! We have added {item_to_add.title()} to your cart!')
         return self.run1
 
-
     # Method for deleting from cart
-    def deleteCart(self):
+    def delete_cart(self):
         item_to_delete = input("what would you like to remove from your cart? ")
         if item_to_delete.title() not in self.cart:
             print(f"I'm sorry, you don't have {item_to_delete.title()} in your cart. Did you want to add that?")
@@ -91,17 +88,16 @@ class ShoppingCart():
             print(f"We've removed {item_to_delete.title()} from your cart!")
             return self.run1
 
-
     # Method for quitting the program and printing the items in the cart
-    def quitCart(self):
-        if self.cart == []:
+    def quit_cart(self):
+        if not self.cart:
             print('\nThank you for coming in today. Perhaps you will find something to purchase next time!')
         else:
             print('\nThank you for shopping at Food and Stuff today! Here is what you purchased:')
             for index, item in enumerate(self.cart, start=1):
-                print(str(index) + ". " + item)
+                print(f"{index}. {item}")
         return False
 
 
 if __name__ == "__main__":
-    ShoppingCart([]).run()
+    ShoppingCart({}).run()
